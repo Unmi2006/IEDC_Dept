@@ -1,4 +1,5 @@
 import { Lightbulb, Users, Rocket, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import LoginCard from './LoginCard'
 import campusHero from '../assets/uem-campus.jpg'
 import campusHeroMobile from '../assets/uem-campus-mobile.jpg'
@@ -70,10 +71,13 @@ export default function HeroSection() {
                 ))}
               </div>
 
-              <button className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#0d56d8] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0d56d8]/40 hover:bg-[#0a45b0] sm:mt-8">
+              <Link
+                to="/about"
+                className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#0d56d8] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0d56d8]/40 hover:bg-[#0a45b0] sm:mt-8"
+              >
                 Explore IEDC
                 <ArrowRight size={16} />
-              </button>
+              </Link>
             </div>
           </div>
 

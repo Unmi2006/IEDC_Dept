@@ -44,7 +44,13 @@ export default function Footer() {
             <a href="#" aria-label="Facebook" className="hover:text-ocean transition-colors">
               <Facebook size={20} />
             </a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-ocean transition-colors">
+            <a
+              href="https://www.linkedin.com/company/uemkcstcsit-iedc/posts/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:text-ocean transition-colors"
+            >
               <Linkedin size={20} />
             </a>
           </div>

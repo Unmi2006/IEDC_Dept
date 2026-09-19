@@ -1,4 +1,4 @@
-import PageBanner from '../components/PageBanner'
+import InternshipsHero from '../components/InternshipsHero'
 import { Briefcase, CalendarClock, GraduationCap, CheckCircle2 } from 'lucide-react'
 
 const highlights = [
@@ -17,12 +17,9 @@ const perks = [
 export default function Internships() {
   return (
     <>
-      <PageBanner
-        title="Internships"
-        subtitle="Winter & Summer internship programs run by IEDC, IEM Newtown(UEM Kolkata)"
-      />
+      <InternshipsHero />
 
-      <section className="bg-white py-16">
+      <section id="internship-details" className="bg-white py-16 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-gray-700 leading-relaxed text-lg mb-10">
             IEDC Lab runs structured internship programs for students of CST, CSIT, CSE
