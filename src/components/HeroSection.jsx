@@ -39,7 +39,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 min-h-[calc(100dvh-64px)] w-full sm:min-h-[calc(100dvh-73px)]">
         <div className="flex min-h-[calc(100dvh-64px)] w-full flex-col justify-center gap-6 px-3 py-5 sm:min-h-[calc(100dvh-73px)] sm:px-4 lg:absolute lg:inset-x-5 lg:top-1/2 lg:min-h-0 lg:w-auto lg:-translate-y-1/2 lg:flex-row lg:items-start lg:justify-between lg:px-0 lg:py-0 xl:inset-x-6">
-          <div className="relative w-full max-w-[560px] shrink-0 rounded-2xl border border-white/50 bg-white/35 p-5 shadow-[0_20px_50px_rgba(8,40,86,0.28)] ring-1 ring-white/40 backdrop-blur-2xl sm:p-7 lg:max-w-[520px]">
+          <div className="relative w-full max-w-[640px] shrink-0 rounded-2xl border border-white/50 bg-white/35 p-5 shadow-[0_20px_50px_rgba(8,40,86,0.28)] ring-1 ring-white/40 backdrop-blur-2xl sm:p-7 lg:max-w-[640px]">
             <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-white/55 via-white/10 to-sky-200/20" />
               <div className="absolute -left-10 -top-16 h-40 w-56 rotate-12 bg-white/40 blur-2xl" />
@@ -48,10 +48,12 @@ export default function HeroSection() {
               <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-blue sm:text-[11px] sm:tracking-[0.22em]">
                 — Innovation | Entrepreneurship | Development
               </p>
-              <h1 className="mt-3 text-[32px] font-extrabold leading-[1.08] tracking-tight text-[#061833] sm:text-5xl lg:text-[62px]">
-                Welcome to
-                <br />
-                <span className="text-[#0d56d8]">IEDC Lab</span>
+              <h1 className="mt-3 text-[22px] font-extrabold leading-[1.18] tracking-tight text-[#061833] sm:text-[28px] lg:text-[34px]">
+                Welcome to the{' '}
+                <span className="text-[#0d56d8]">
+                  Innovation and Entrepreneurship Development Centre Laboratory
+                </span>{' '}
+                of our Department
               </h1>
               <p className="mt-3 text-lg font-semibold text-[#12284a] sm:text-[22px]">Where Ideas Take Shape</p>
               <p className="mt-3 max-w-[430px] text-sm leading-relaxed text-[#1c3558] sm:text-[15px]">
