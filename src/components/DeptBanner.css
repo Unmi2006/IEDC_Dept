@@ -1,0 +1,348 @@
+.dept-banner {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      90deg,
+      #0758a8 0%,
+      #0870cf 18%,
+      #064687 42%,
+      #063a70 50%,
+      #064687 58%,
+      #0870cf 82%,
+      #0758a8 100%
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(100, 210, 255, 0.5);
+  border-bottom: 2px solid rgba(0, 205, 255, 0.75);
+  box-shadow:
+    0 2px 10px rgba(0, 70, 150, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Background layer */
+
+.dept-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Circuit SVGs */
+
+.circuit {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 42%;
+  overflow: visible;
+}
+
+.circuit-left {
+  left: 0;
+}
+
+.circuit-right {
+  right: 0;
+}
+
+/* Circuit lines */
+
+.circuit-lines {
+  fill: none;
+  stroke: #16b9ff;
+  stroke-width: 1.2;
+  opacity: 0.72;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 12 7;
+  animation: circuitFlow 5s linear infinite;
+}
+
+@keyframes circuitFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -95;
+  }
+}
+
+/* Glowing nodes */
+
+.circuit-nodes {
+  fill: #20c7ff;
+  filter: drop-shadow(0 0 4px rgba(20, 190, 255, 0.95));
+  animation: nodePulse 2.2s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    transform-origin: center;
+  }
+}
+
+/* Center glow */
+
+.center-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(17, 132, 255, 0.38) 0%,
+      rgba(0, 91, 180, 0.12) 45%,
+      transparent 75%
+    );
+}
+
+/* Diagonal center decorations */
+
+.diagonal {
+  position: absolute;
+  top: -15px;
+  height: 90px;
+  width: 80px;
+
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(0, 177, 255, 0.95) 48%,
+    rgba(0, 111, 225, 0.75) 52%,
+    transparent 100%
+  );
+
+  opacity: 0.9;
+}
+
+.diagonal-left {
+  left: 23%;
+  transform: skewX(28deg);
+}
+
+.diagonal-right {
+  right: 23%;
+  transform: skewX(-28deg);
+}
+
+/* Animated particles */
+
+.moving-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+
+  background: #49d6ff;
+
+  box-shadow:
+    0 0 5px #20bfff,
+    0 0 12px rgba(20, 190, 255, 0.8);
+
+  opacity: 0;
+}
+
+.dot-1 {
+  top: 18px;
+  left: 3%;
+  animation: moveOne 5s linear infinite;
+}
+
+.dot-2 {
+  top: 38px;
+  left: 18%;
+  animation: moveTwo 6s linear infinite 1s;
+}
+
+.dot-3 {
+  top: 22px;
+  right: 4%;
+  animation: moveThree 5.5s linear infinite 0.5s;
+}
+
+.dot-4 {
+  top: 42px;
+  right: 20%;
+  animation: moveFour 6.5s linear infinite 1.5s;
+}
+
+@keyframes moveOne {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(320px);
+    opacity: 0;
+  }
+}
+
+@keyframes moveTwo {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(260px);
+    opacity: 0;
+  }
+}
+
+@keyframes moveThree {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-320px);
+    opacity: 0;
+  }
+}
+
+@keyframes moveFour {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-260px);
+    opacity: 0;
+  }
+}
+
+/* Text */
+
+.dept-title {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: white;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(15px, 1.35vw, 23px);
+  font-weight: 700;
+
+  letter-spacing: 0.15px;
+
+  white-space: nowrap;
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 160, 255, 0.15);
+}
+
+.dept-title b {
+  color: #19c7ff;
+  font-weight: 700;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .dept-banner {
+    height: 52px;
+  }
+
+  .dept-title {
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .circuit {
+    width: 35%;
+  }
+
+  .diagonal-left {
+    left: 18%;
+  }
+
+  .diagonal-right {
+    right: 18%;
+  }
+}
+
+@media (max-width: 600px) {
+  .dept-banner {
+    height: 46px;
+  }
+
+  .dept-title {
+    gap: 4px;
+    font-size: 10px;
+  }
+
+  .circuit {
+    width: 25%;
+    opacity: 0.7;
+  }
+
+  .diagonal {
+    display: none;
+  }
+}

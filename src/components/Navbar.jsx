@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { Menu, X, LogOut } from 'lucide-react'
 import iemLogo from '../assets/iem-logo.png'
 import uemLogo from '../assets/uem-logo.png'
+import iedcLogo from '../assets/iedc-logo.png'
 import { useAuth } from '../context/AuthContext'
 
 const navLinks = [
@@ -33,9 +34,15 @@ export default function Navbar() {
     <header className="bg-white text-ocean-dark sticky top-0 z-50 shadow-sm border-b border-ocean/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2.5">
         {/* IEM logo, left */}
-        <Link to="/" className="shrink-0">
-          <img src={iemLogo} alt="Institute of Engineering & Management" className="h-14 w-auto" />
-        </Link>
+        <div className="flex items-center gap-4 shrink-0">
+          <Link to="/" className="shrink-0">
+            <img src={iemLogo} alt="Institute of Engineering & Management" className="h-14 w-auto" />
+          </Link>
+          <span className="hidden xl:block h-10 w-px bg-slate-300" />
+          <Link to="/" className="shrink-0 hidden lg:block">
+            <img src={iedcLogo} alt="Innovation and Entrepreneurship Development Cell" className="h-12 w-auto max-w-[150px] object-contain" />
+          </Link>
+        </div>
 
         {/* Desktop nav */}
         <nav className="hidden xl:flex items-center gap-4 text-[14px] font-medium">
