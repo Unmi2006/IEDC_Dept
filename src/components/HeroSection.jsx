@@ -53,7 +53,7 @@ export default function HeroSection() {
                 <span className="text-[#0d56d8]">
                   Innovation and Entrepreneurship Development Centre Laboratory
                 </span>{' '}
-                of our Department
+                of the Dept. of CST, CSIT, CSE(Cyber Security), CSE(Networks)
               </h1>
               <p className="mt-3 text-lg font-semibold text-[#12284a] sm:text-[22px]">Where Ideas Take Shape</p>
               <p className="mt-3 max-w-[430px] text-sm leading-relaxed text-[#1c3558] sm:text-[15px]">

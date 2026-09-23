@@ -93,11 +93,7 @@ export default function DeptBanner() {
 
       {/* Banner text */}
       <div className="dept-title">
-        <span>IEDC Lab</span>
-        <b>—</b>
-        <span>Dept of CST, CSIT, CSE (Cybersecurity)</span>
-        <span>&amp;</span>
-        <span>CSE (Networks)</span>
+        <span>IEDC Lab: Department of CST, CSIT, CSE(Cyber Security), CSE(Networks)</span>
       </div>
     </section>
   );
