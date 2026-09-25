@@ -2,6 +2,7 @@ import ResourcesHero from '../components/ResourcesHero'
 import ResourceQuickLinks from '../components/ResourceQuickLinks'
 import ResourceCategories from '../components/ResourceCategories'
 import ToolsPlatforms from '../components/ToolsPlatforms'
+import LabEquipment from '../components/LabEquipment'
 import ResourcesHelp from '../components/ResourcesHelp'
 import ResourcesCTA from '../components/ResourcesCTA'
 
@@ -12,6 +13,7 @@ export default function Resources() {
       <ResourceQuickLinks />
       <ResourceCategories />
       <ToolsPlatforms />
+      <LabEquipment />
       <ResourcesHelp />
       <ResourcesCTA />
     </>

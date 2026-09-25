@@ -8,6 +8,10 @@ const faculty = [
     photo: hodPhoto,
   },
   {
+    name: 'Prof. Dr. Subhalaxmi Chakraborty',
+    role: 'Assistant HoD, IEDC',
+  },
+  {
     name: 'Prof. (Dr.) Anirban Ganguly',
     role: 'SPOC and Coordinator',
   },

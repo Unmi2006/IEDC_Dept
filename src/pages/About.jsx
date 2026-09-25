@@ -6,7 +6,6 @@ import Journey from '../components/Journey'
 import HubSpaces from '../components/HubSpaces'
 import HodSection from '../components/HodSection'
 import ThrustAreas from '../components/ThrustAreas'
-import LabEquipment from '../components/LabEquipment'
 import AboutCTA from '../components/AboutCTA'
 
 export default function About() {
@@ -20,7 +19,6 @@ export default function About() {
       <HubSpaces />
       <HodSection />
       <ThrustAreas />
-      <LabEquipment />
       <AboutCTA />
     </>
   )
