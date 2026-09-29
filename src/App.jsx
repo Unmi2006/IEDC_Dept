@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Team from './pages/Team'
+import Faculty from './pages/Faculty'
 import Resources from './pages/Resources'
 import Internships from './pages/Internships'
 import Projects from './pages/Projects'
@@ -19,14 +20,15 @@ import ProtectedRoute from './components/ProtectedRoute'
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white flex flex-col">
-        <Navbar />
+      <Sidebar />
+      <div className="min-h-screen bg-white flex flex-col pl-14 md:pl-16">
         <ScrollToTop />
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/team/:slug" element={<Faculty />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/internships" element={<Internships />} />
             <Route path="/projects" element={<Projects />} />

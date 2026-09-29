@@ -1,33 +1,5 @@
-import { User } from 'lucide-react'
-import hodPhoto from '../assets/maumita-chakraborty.jpg'
-
-const faculty = [
-  {
-    name: 'Prof. (Dr.) Maumita Chakraborty',
-    role: 'HoD and In-charge of IEDC Lab',
-    photo: hodPhoto,
-  },
-  {
-    name: 'Prof. Dr. Subhalaxmi Chakraborty',
-    role: 'Assistant HoD, IEDC',
-  },
-  {
-    name: 'Prof. (Dr.) Anirban Ganguly',
-    role: 'SPOC and Coordinator',
-  },
-  {
-    name: 'Prof. (Dr.) Chiradeep Mukherjee',
-    role: 'Coordinator',
-  },
-  {
-    name: 'Prof. Ayan Das',
-    role: 'Coordinator',
-  },
-  {
-    name: 'Mr. Aniket Kundu',
-    role: 'Coordinator',
-  },
-]
+import { Link } from 'react-router-dom'
+import { faculty } from '../data/faculty'
 
 export default function Leadership() {
   return (
@@ -44,23 +16,21 @@ export default function Leadership() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {faculty.map((person) => (
-            <div key={person.name} className="flex gap-5 bg-sky-50 rounded-2xl p-5">
-              {person.photo ? (
-                <img
-                  src={person.photo}
-                  alt={person.name}
-                  className="w-28 h-32 sm:w-32 sm:h-36 object-cover object-[center_18%] rounded-xl shrink-0"
-                />
-              ) : (
-                <div className="w-28 h-32 sm:w-32 sm:h-36 rounded-xl shrink-0 bg-white border border-brand-blue/15 flex items-center justify-center text-brand-blue">
-                  <User size={40} strokeWidth={1.5} />
-                </div>
-              )}
+            <Link
+              key={person.slug}
+              to={`/team/${person.slug}`}
+              className="flex gap-5 bg-sky-50 rounded-2xl p-5 hover:shadow-md transition-shadow"
+            >
+              <img
+                src={person.photo}
+                alt={person.name}
+                className="w-28 h-32 sm:w-32 sm:h-36 object-cover object-top rounded-xl shrink-0"
+              />
               <div className="flex flex-col justify-center">
                 <h3 className="text-navy-900 font-bold">{person.name}</h3>
-                <p className="text-slate-500 text-xs mt-1">{person.role}</p>
+                <p className="text-slate-500 text-xs mt-1">{person.iedcRole}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
