@@ -93,14 +93,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      <div className="max-w-6xl mx-auto px-6">
-        <hr className="border-ocean/10 my-8" />
-        <p className="text-center text-gray-500 text-sm">
-          Developed by <a href="#" className="text-ocean hover:underline">Sujaan</a> &{' '}
-          <a href="#" className="text-ocean hover:underline">Sanket</a>
-        </p>
-      </div>
     </footer>
   )
 }
