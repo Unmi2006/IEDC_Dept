@@ -31,3 +31,9 @@ npm run preview
 ## Important
 
 The current attendance, certificate, and login data are frontend demo/placeholder data. For real college deployment, connect these modules to a backend/database and move authentication to server-side or managed authentication.
+
+## Pending
+1. Add the student information
+2. Attendance Window
+3. Add internship related documents in the internship window
+   
