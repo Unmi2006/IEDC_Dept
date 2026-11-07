@@ -36,4 +36,5 @@ The current attendance, certificate, and login data are frontend demo/placeholde
 1. Add the student information
 2. Attendance Window
 3. Add internship related documents in the internship window
+4. bring back the old format logo not visible
    
