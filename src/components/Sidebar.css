@@ -78,7 +78,7 @@
 }
 
 .iedc-sidebar[data-open='true'] .iedc-sidebar__brand {
-  max-height: 150px;
+  max-height: 190px;
   opacity: 1;
   transition-delay: 0ms, 100ms, 0ms;
 }

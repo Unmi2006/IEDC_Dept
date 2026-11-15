@@ -1,44 +1,105 @@
-import { useState } from 'react'
-import { Linkedin, Instagram, Facebook, Phone, User } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { ShieldCheck, Code2, MessagesSquare, Workflow, Megaphone, Users } from 'lucide-react'
 
-const teamRoles = [
-  { role: 'Admin', count: 2 },
-  { role: 'Webmaster', count: 2 },
-  { role: 'Moderator', count: 2 },
-  { role: 'Operation', count: 3 },
-  { role: 'Social Media Team', count: 3 },
+const teams = [
+  {
+    key: 'Admin',
+    label: 'Admin',
+    icon: ShieldCheck,
+    blurb: 'Leads the student side of IEDC Lab and keeps everything on track.',
+    members: ['Unmilan Das', 'Shreyasee Chatterjee', 'Agnibh Ghosh'],
+  },
+  {
+    key: 'Web Master',
+    label: 'Web Master',
+    icon: Code2,
+    blurb: 'Builds and maintains the IEDC Lab website.',
+    members: ['Pritam Paul', 'Siddhartha Lenka', 'Krish Kumar'],
+  },
+  {
+    key: 'Moderator',
+    label: 'Moderator',
+    icon: MessagesSquare,
+    blurb: 'Keeps the community active, welcoming and well organised.',
+    members: ['Piyasa Mandal', 'Soumik Bid', 'Sk. Saqibul Islam'],
+  },
+  {
+    key: 'Operation',
+    label: 'Operation',
+    icon: Workflow,
+    blurb: 'Runs events, logistics and day-to-day lab operations.',
+    members: ['Ahaana Bhattacharya', 'Koushik Sarkar', 'Piyasa Mandal', 'Megha Mondal'],
+  },
+  {
+    key: 'Social Media',
+    label: 'Social Media',
+    sub: 'Promotion Team',
+    icon: Megaphone,
+    blurb: 'Spreads the word about IEDC Lab across social platforms.',
+    members: ['Koushik Sarkar', 'Megha Mondal'],
+  },
 ]
 
-const members = teamRoles.flatMap(({ role, count }) =>
-  Array.from({ length: count }, (_, i) => ({ id: `${role}-${i + 1}`, role, index: i + 1 }))
-)
+const tabs = ['All', ...teams.map((t) => t.key)]
 
-const tabs = ['All', ...teamRoles.map((r) => r.role)]
+const initials = (name) => {
+  const parts = name.split(' ').filter((p) => p && !p.endsWith('.'))
+  return ((parts[0]?.[0] ?? '') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase()
+}
 
-function MemberCard({ role, index }) {
+const gradients = [
+  'from-[#1463e0] to-[#3d9bff]',
+  'from-[#0e2a52] to-[#1463e0]',
+  'from-[#0f5c8f] to-[#38bdf8]',
+  'from-[#123568] to-[#3d9bff]',
+]
+const gradientFor = (name) => {
+  let h = 0
+  for (const c of name) h = (h * 31 + c.charCodeAt(0)) % 997
+  return gradients[h % gradients.length]
+}
+
+function MemberCard({ name }) {
   return (
-    <div className="bg-slate-50 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
-      <div className="w-16 h-16 mx-auto rounded-full bg-white border border-brand-blue/15 flex items-center justify-center text-brand-blue mb-3">
-        <User size={26} strokeWidth={1.75} />
+    <div className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-blue/40 hover:shadow-lg">
+      <div
+        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${gradientFor(
+          name,
+        )} text-lg font-bold tracking-wide text-white shadow-md ring-4 ring-brand-blue/10`}
+        aria-hidden="true"
+      >
+        {initials(name)}
       </div>
-      <h3 className="text-navy-900 font-bold text-sm">Add name</h3>
-      <p className="text-slate-500 text-xs mb-2">
-        {role} {index}
-      </p>
-      <p className="flex items-center justify-center gap-1.5 text-slate-400 text-xs mb-2">
-        <Phone size={12} />
-        Add phone number
-      </p>
-      <div className="flex justify-center gap-2.5 text-slate-300">
-        <a href="#" aria-label="LinkedIn" className="hover:text-brand-blue transition-colors">
-          <Linkedin size={16} />
-        </a>
-        <a href="#" aria-label="Instagram" className="hover:text-brand-blue transition-colors">
-          <Instagram size={16} />
-        </a>
-        <a href="#" aria-label="Facebook" className="hover:text-brand-blue transition-colors">
-          <Facebook size={16} />
-        </a>
+      <h4 className="min-w-0 text-[15px] font-bold leading-snug text-navy-900">{name}</h4>
+    </div>
+  )
+}
+
+function TeamGroup({ team }) {
+  const Icon = team.icon
+  return (
+    <div>
+      <div className="mb-4 flex items-start gap-3">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+          <Icon size={22} strokeWidth={1.9} />
+        </span>
+        <div className="min-w-0 flex-1">
+          <h3 className="flex flex-wrap items-center gap-x-2 text-lg font-extrabold text-navy-900">
+            {team.label}
+            {team.sub && (
+              <span className="text-sm font-semibold text-slate-500">({team.sub})</span>
+            )}
+            <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">
+              {team.members.length}
+            </span>
+          </h3>
+          <p className="text-sm text-slate-500">{team.blurb}</p>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {team.members.map((name) => (
+          <MemberCard key={`${team.key}-${name}`} name={name} />
+        ))}
       </div>
     </div>
   )
@@ -46,32 +107,41 @@ function MemberCard({ role, index }) {
 
 export default function TeamMembers() {
   const [active, setActive] = useState('All')
-  const filtered = active === 'All' ? members : members.filter((m) => m.role === active)
+
+  const totalPeople = useMemo(() => new Set(teams.flatMap((t) => t.members)).size, [])
+  const shown = active === 'All' ? teams : teams.filter((t) => t.key === active)
 
   return (
-    <section className="bg-white py-14 sm:py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+    <section className="bg-gradient-to-b from-white via-sky-50/40 to-white py-14 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-blue mb-2">
-              — Team Members
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand-blue">
+              — Student Team
             </p>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900">Our Team</h2>
-            <p className="text-slate-500 text-sm mt-1 max-w-xl">
-              A diverse group of innovators, creators and changemakers working together to
-              make ideas happen.
+            <h2 className="text-2xl font-extrabold text-navy-900 sm:text-3xl">Our Team</h2>
+            <p className="mt-1 max-w-xl text-sm text-slate-500">
+              A diverse group of innovators, creators and changemakers working together to make
+              ideas happen.
+            </p>
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-brand-blue/10 px-3.5 py-1.5 text-xs font-semibold text-brand-blue">
+              <Users size={14} />
+              {totalPeople} students · {teams.length} teams
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter team by role">
             {tabs.map((tab) => (
               <button
                 key={tab}
+                type="button"
+                role="tab"
+                aria-selected={active === tab}
                 onClick={() => setActive(tab)}
-                className={`rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium border transition-colors ${
+                className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors sm:text-sm ${
                   active === tab
-                    ? 'bg-brand-blue text-white border-brand-blue'
-                    : 'text-slate-600 border-slate-200 hover:border-brand-blue/50'
+                    ? 'border-brand-blue bg-brand-blue text-white shadow-md shadow-brand-blue/25'
+                    : 'border-slate-200 bg-white text-slate-600 hover:border-brand-blue/50 hover:text-brand-blue'
                 }`}
               >
                 {tab}
@@ -80,9 +150,9 @@ export default function TeamMembers() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-          {filtered.map((m) => (
-            <MemberCard key={m.id} role={m.role} index={m.index} />
+        <div className="space-y-12">
+          {shown.map((team) => (
+            <TeamGroup key={team.key} team={team} />
           ))}
         </div>
       </div>
