@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
-import { ShieldCheck, Code2, MessagesSquare, Workflow, Megaphone, Users } from 'lucide-react'
+import { ShieldCheck, Code2, MessagesSquare, Workflow, Megaphone, Users, Mail, Linkedin } from 'lucide-react'
+import { profileFor } from '../data/students'
 
 const teams = [
   {
@@ -60,17 +61,55 @@ const gradientFor = (name) => {
 }
 
 function MemberCard({ name }) {
+  const profile = profileFor(name)
+  const linkCls =
+    'flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue transition-colors hover:bg-brand-blue hover:text-white'
   return (
-    <div className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-blue/40 hover:shadow-lg">
-      <div
-        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${gradientFor(
-          name,
-        )} text-lg font-bold tracking-wide text-white shadow-md ring-4 ring-brand-blue/10`}
-        aria-hidden="true"
-      >
-        {initials(name)}
+    <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-xl">
+      <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+        {profile?.photo ? (
+          <img
+            src={profile.photo}
+            alt={name}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div
+            className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${gradientFor(
+              name,
+            )} text-5xl font-bold tracking-wide text-white`}
+            aria-hidden="true"
+          >
+            {initials(name)}
+          </div>
+        )}
       </div>
-      <h4 className="min-w-0 text-[15px] font-bold leading-snug text-navy-900">{name}</h4>
+      <div className="flex items-center justify-between gap-3 p-4">
+        <h4 className="min-w-0 text-[15px] font-bold leading-snug text-navy-900">{name}</h4>
+        {profile && (
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href={`mailto:${profile.email}`}
+              title={profile.email}
+              aria-label={`Email ${name}`}
+              className={linkCls}
+            >
+              <Mail size={15} />
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+              aria-label={`${name} on LinkedIn`}
+              className={linkCls}
+            >
+              <Linkedin size={15} />
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
@@ -96,7 +135,7 @@ function TeamGroup({ team }) {
           <p className="text-sm text-slate-500">{team.blurb}</p>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
         {team.members.map((name) => (
           <MemberCard key={`${team.key}-${name}`} name={name} />
         ))}
